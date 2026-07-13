@@ -12,86 +12,64 @@ export function generateWeatherSummary(
   const currentLang = lang || 'en';
 
   if (currentLang === 'ml') {
-    // Malayalam sentences builder
     const sentences: string[] = [];
-
-    // Drying clothes advice
-    if (scores.drying >= 80) {
-      sentences.push('ഇന്ന് തുണികൾ പുറത്ത് ഉണക്കാൻ വളരെ അനുയോജ്യമായ ദിവസമാണ്.');
-    } else if (scores.drying >= 50) {
-      sentences.push('ഇന്ന് തുണികൾ ഉണക്കാൻ തരക്കേടില്ലാത്ത ദിവസമാണ്, എങ്കിലും അല്പം കൂടുതൽ സമയമെടുക്കും.');
-    } else {
-      sentences.push('ശക്തമായ ഈർപ്പമോ മഴയോ ഉള്ളതിനാൽ തുണികൾ പുറത്തിടുന്നത് ഒഴിവാക്കുക.');
-    }
+    sentences.push('നമസ്കാരം.');
 
     // Rain probability advice
-    if (weather.rainProbability < 15) {
-      sentences.push('വൈകുന്നേരം വരെ മഴ പെയ്യാൻ സാധ്യത കുറവാണ്.');
-    } else if (weather.rainProbability < 50) {
-      sentences.push('ചില ഭാഗങ്ങളിൽ നേരിയ മഴയ്ക്ക് സാധ്യത കാണുന്നുണ്ട്.');
-    } else if (weather.rainProbability < 80) {
-      sentences.push('മഴ പെയ്യാൻ നല്ല സാധ്യതയുള്ളതിനാൽ പുറത്തുപോകുമ്പോൾ കുട കരുതുക.');
+    if (weather.rainProbability < 25) {
+      sentences.push('ഇന്ന് മഴയ്ക്ക് സാധ്യത കുറവാണ്.');
+    } else if (weather.rainProbability < 60) {
+      sentences.push('ഇന്ന് നേരിയ മഴയ്ക്ക് സാധ്യതയുണ്ട്.');
     } else {
-      sentences.push('അതിശക്തമായ മഴയ്ക്കും ഇടിമിന്നലിനും സാധ്യതയുണ്ട്, സുരക്ഷിതരായി ഇരിക്കുക.');
+      sentences.push('ഇന്ന് ശക്തമായ മഴയ്ക്ക് സാധ്യതയുള്ളതിനാൽ ശ്രദ്ധിക്കുക.');
     }
 
-    // Wind speed advice
-    if (weather.windSpeed > 25) {
-      sentences.push('ശക്തമായ കാറ്റുള്ളതിനാൽ തുണികൾ നന്നായി കെട്ടിയിടുക.');
-    } else if (weather.windSpeed >= 8) {
-      sentences.push('അനുകൂലമായ മിതമായ കാറ്റ് തുണികൾ പെട്ടെന്ന് ഉണങ്ങാൻ സഹായിക്കും.');
+    // Clothes drying
+    if (scores.drying >= 80) {
+      sentences.push('വസ്ത്രങ്ങൾ വെയിലത്ത് ഇടാം.');
+    } else if (scores.drying >= 50) {
+      sentences.push('തുണികൾ ഉണങ്ങാൻ കൂടുതൽ സമയമെടുക്കും.');
+    } else {
+      sentences.push('ഈർപ്പമുള്ളതിനാൽ തുണികൾ പുറത്തിടുന്നത് ഒഴിവാക്കുക.');
     }
 
-    // Estimated drying time
-    if (scores.drying >= 85) {
-      sentences.push('കണക്കാക്കിയ സമയം: 2 മണിക്കൂർ.');
-    } else if (scores.drying >= 60) {
-      sentences.push('കണക്കാക്കിയ സമയം: 4 മണിക്കൂർ.');
-    } else if (scores.drying >= 40) {
-      sentences.push('കണക്കാക്കിയ സമയം: 6 മണിക്കൂർ.');
+    // 4 hours forecast summary
+    if (weather.rainProbability < 35) {
+      sentences.push('അടുത്ത നാല് മണിക്കൂറിലും മഴ പ്രതീക്ഷിക്കുന്നില്ല.');
+    } else {
+      sentences.push('അടുത്ത മണിക്കൂറുകളിൽ മഴ പെയ്യാൻ സാധ്യതയുണ്ട്.');
     }
 
     return sentences.join(' ');
   }
 
   if (currentLang === 'hi') {
-    // Hindi sentences builder
     const sentences: string[] = [];
-
-    // Drying clothes advice
-    if (scores.drying >= 80) {
-      sentences.push('आज कपड़े सुखाने के लिए बहुत अच्छा दिन है।');
-    } else if (scores.drying >= 50) {
-      sentences.push('कपड़े सुखाने के लिए आज ठीक-ठाक दिन है, लेकिन सूखने में थोड़ा अधिक समय लग सकता है।');
-    } else {
-      sentences.push('बारिश या उच्च नमी के कारण आज कपड़े बाहर सुखाने से बचें।');
-    }
+    sentences.push('नमस्ते।');
 
     // Rain probability advice
-    if (weather.rainProbability < 15) {
-      sentences.push('शाम तक बारिश की संभावना बहुत कम है।');
-    } else if (weather.rainProbability < 50) {
-      sentences.push('हल्की बूंदाबांदी की संभावना हो सकती है।');
-    } else if (weather.rainProbability < 80) {
-      sentences.push('बारिश होने की पूरी संभावना है, कृपया बाहर जाते समय छाता साथ रखें।');
+    if (weather.rainProbability < 25) {
+      sentences.push('आज बारिश की संभावना कम है।');
+    } else if (weather.rainProbability < 60) {
+      sentences.push('आज हल्की वर्षा की संभावना है।');
     } else {
-      sentences.push('आंधी-तूफान के साथ भारी बारिश की चेतावनी है, कृपया घर में सुरक्षित रहें।');
+      sentences.push('आज भारी बारिश की चेतावनी है, सावधान रहें।');
     }
 
-    // Wind speed advice
-    if (weather.windSpeed > 25) {
-      sentences.push('तेज हवाओं के कारण कपड़े उड़ सकते हैं, उन्हें ठीक से सुरक्षित करें।');
-    } else if (weather.windSpeed >= 8) {
-      sentences.push('मध्यम हवा कपड़े जल्दी सुखाने में मदद करेगी।');
+    // Clothes drying
+    if (scores.drying >= 80) {
+      sentences.push('आज कपड़े धूप में सुखाए जा सकते हैं।');
+    } else if (scores.drying >= 50) {
+      sentences.push('कपड़े सूखने में कुछ अधिक समय लग सकता है।');
+    } else {
+      sentences.push('नमी के कारण आज कपड़े बाहर सुखाने से बचें।');
     }
 
-    // Estimated drying time
-    if (scores.drying >= 85) {
-      sentences.push('अनुमानित समय: 2 घंटे।');
-    } else if (scores.drying >= 60) {
-      sentences.push('अनुमानित समय: 4 घंटे।');
-    } else if (scores.drying >= 40) {
-      sentences.push('अनुमानित समय: 6 घंटे।');
+    // 4 hours forecast summary
+    if (weather.rainProbability < 35) {
+      sentences.push('अगले चार घंटों में बारिश की उम्मीद नहीं है।');
+    } else {
+      sentences.push('आने वाले घंटों में बारिश की संभावना है।');
     }
 
     return sentences.join(' ');
@@ -99,41 +77,31 @@ export function generateWeatherSummary(
 
   // Baseline English builder
   const sentences: string[] = [];
-
-  // Drying clothes advice
-  if (scores.drying >= 80) {
-    sentences.push('Today is an excellent day to dry clothes.');
-  } else if (scores.drying >= 50) {
-    sentences.push('It is a moderate day to dry clothes, though drying might take longer.');
-  } else {
-    sentences.push('Avoid drying clothes outdoors due to high moisture or active precipitation.');
-  }
+  sentences.push('Hello.');
 
   // Rain probability advice
-  if (weather.rainProbability < 15) {
-    sentences.push('Rain is highly unlikely before evening.');
-  } else if (weather.rainProbability < 50) {
-    sentences.push('There is a slight chance of light precipitation.');
-  } else if (weather.rainProbability < 80) {
-    sentences.push('Rain is expected today, keep an umbrella handy.');
+  if (weather.rainProbability < 25) {
+    sentences.push('Rain is unlikely today.');
+  } else if (weather.rainProbability < 60) {
+    sentences.push('There is a chance of light rain.');
   } else {
-    sentences.push('Heavy downpour and lightning are probable. Stay indoors and be safe.');
+    sentences.push('Heavy rainfall is expected today, stay alert.');
   }
 
-  // Wind speed advice
-  if (weather.windSpeed > 25) {
-    sentences.push('Strong wind gusts might blow garments away; secure them tightly.');
-  } else if (weather.windSpeed >= 8) {
-    sentences.push('Moderate wind will help clothes dry faster.');
+  // Clothes drying
+  if (scores.drying >= 80) {
+    sentences.push('You can hang your clothes outside to dry.');
+  } else if (scores.drying >= 50) {
+    sentences.push('Drying clothes outside might take longer.');
+  } else {
+    sentences.push('Avoid drying clothes outdoors due to wet weather.');
   }
 
-  // Estimated drying time
-  if (scores.drying >= 85) {
-    sentences.push('Estimated drying time: 2 hours.');
-  } else if (scores.drying >= 60) {
-    sentences.push('Estimated drying time: 4 hours.');
-  } else if (scores.drying >= 40) {
-    sentences.push('Estimated drying time: 6 hours.');
+  // 4 hours forecast summary
+  if (weather.rainProbability < 35) {
+    sentences.push('No rain is expected for the next four hours.');
+  } else {
+    sentences.push('Rain is likely in the coming hours.');
   }
 
   return sentences.join(' ');

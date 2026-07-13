@@ -155,5 +155,33 @@ export function generateRecommendations(
     reason: farmReason,
   });
 
+  // 6. Walking Suitability
+  let walkType: 'YES' | 'NO' | 'CAUTION' = 'YES';
+  let walkAnswer = t('decisions.yes', 'Yes');
+  let walkReason = '';
+  const cond = weather.condition || 'sunny';
+
+  if (scores.walking >= 75) {
+    walkType = 'YES';
+    walkAnswer = t('decisions.yes', 'Yes');
+    walkReason = t(`decisions_data.${cond}.walking`, 'Perfect weather for an outdoor walk.');
+  } else if (scores.walking >= 40) {
+    walkType = 'CAUTION';
+    walkAnswer = t('decisions.caution', 'Caution');
+    walkReason = t(`decisions_data.${cond}.walking`, 'Cloudy and pleasant, suitable for walking.');
+  } else {
+    walkType = 'NO';
+    walkAnswer = t('decisions.no', 'No');
+    walkReason = t(`decisions_data.${cond}.walking`, 'Unfavorable weather conditions, high risk of rain or extreme temperatures.');
+  }
+
+  decisions.push({
+    id: 'walking',
+    question: t('questions.walking', 'Is today suitable for walking?'),
+    answer: walkAnswer,
+    type: walkType,
+    reason: walkReason,
+  });
+
   return decisions;
 }

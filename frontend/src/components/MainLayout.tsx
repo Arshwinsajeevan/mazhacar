@@ -20,6 +20,10 @@ import {
   Cloud,
 } from 'lucide-react';
 
+import { useUserLocation } from '@/providers/LocationProvider';
+import { useWeather } from '@/hooks/useWeather';
+import { useWeatherNotifications } from '@/hooks/useWeatherNotifications';
+
 interface MainLayoutProps {
   children: React.ReactNode;
 }
@@ -30,11 +34,19 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const { t } = useTranslation();
   const pathname = usePathname();
 
+  const { currentLocation } = useUserLocation();
+  const { data: weather } = useWeather(currentLocation.latitude, currentLocation.longitude);
+
+  // Monitor weather and trigger notifications
+  useWeatherNotifications(weather);
+
+  const hasAlert = weather ? weather.scores.overallSafety < 65 || weather.current.condition === 'stormy' : false;
+
   const navItems = [
     { name: t('nav.home'), href: '/', icon: Home },
     { name: t('nav.forecast'), href: '/forecast', icon: Calendar },
     { name: t('nav.map'), href: '/map', icon: MapIcon },
-    { name: t('nav.alerts'), href: '/alerts', icon: AlertTriangle, badge: true },
+    { name: t('nav.alerts'), href: '/alerts', icon: AlertTriangle, badge: hasAlert },
     { name: t('nav.favorites'), href: '/favorites', icon: Heart },
     { name: t('nav.settings'), href: '/settings', icon: SettingsIcon },
     { name: t('nav.about'), href: '/about', icon: Info },

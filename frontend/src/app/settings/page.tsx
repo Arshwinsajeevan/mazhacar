@@ -21,11 +21,35 @@ export default function SettingsPage() {
   const [speechSpeed, setSpeechSpeed] = useState(1);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
+  // Load settings from local storage on mount
+  React.useEffect(() => {
+    try {
+      const stored = localStorage.getItem('mazhacar_settings');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.notifications !== undefined) setNotifications(parsed.notifications);
+        if (parsed.voiceEnabled !== undefined) setVoiceEnabled(parsed.voiceEnabled);
+        if (parsed.speechSpeed !== undefined) setSpeechSpeed(parsed.speechSpeed);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     changeLanguage(e.target.value as any);
   };
 
   const handleSave = () => {
+    try {
+      localStorage.setItem('mazhacar_settings', JSON.stringify({
+        notifications,
+        voiceEnabled,
+        speechSpeed
+      }));
+    } catch (e) {
+      console.error(e);
+    }
     setSaveSuccess(true);
     setTimeout(() => setSaveSuccess(false), 3000);
   };

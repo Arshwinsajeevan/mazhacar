@@ -55,7 +55,8 @@
     "travel_safe": "Is it safe to travel?",
     "outdoor_activity": "Is today suitable for outdoor activities?",
     "rain_soon": "Will it rain soon?",
-    "outdoor_farming": "Is today suitable for farming?"
+    "outdoor_farming": "Is today suitable for farming?",
+    "walking": "Is today suitable for walking?"
   },
   "scores": {
     "drying": "Clothes Drying",
@@ -148,7 +149,8 @@
       "carry_umbrella": "Only a 5% chance of rain today.",
       "travel_safe": "Clear skies, roads are safe for travel.",
       "outdoor_activity": "Excellent conditions for sports and travel.",
-      "farming": "Favorable temperature and humidity for irrigation and crop checks."
+      "farming": "Favorable temperature and humidity for irrigation and crop checks.",
+      "walking": "Sunny and comfortable; great weather for a walk outdoors."
     },
     "rainy": {
       "desc": "Rain is expected today. Carry an umbrella when heading out.",
@@ -156,7 +158,8 @@
       "carry_umbrella": "80% chance of rain, an umbrella is highly recommended.",
       "travel_safe": "Roads might be slippery. Drive slowly and with caution.",
       "outdoor_activity": "Wet and damp conditions are unsuitable for outdoor activities.",
-      "farming": "Sufficient soil moisture, avoid pesticide application."
+      "farming": "Sufficient soil moisture, avoid pesticide application.",
+      "walking": "Wet surfaces and rain; avoid walking outdoors."
     },
     "cloudy": {
       "desc": "Overcast conditions. Light showers may occur at any time.",
@@ -164,7 +167,8 @@
       "carry_umbrella": "Sudden drizzle is possible under heavy clouds.",
       "travel_safe": "Cool climate, pleasant conditions for travel.",
       "outdoor_activity": "Favorable outdoor weather as sun heat is low.",
-      "farming": "Moderate weather, soil moisture levels are highly variable."
+      "farming": "Moderate weather, soil moisture levels are highly variable.",
+      "walking": "Cool temperatures and low sunlight; excellent for walking."
     },
     "stormy": {
       "desc": "Heavy winds and thunderstorm. Avoid non-essential travels.",
@@ -172,7 +176,8 @@
       "carry_umbrella": "Severe winds make umbrellas ineffective. Stay indoors.",
       "travel_safe": "Risk of uprooted trees and water logging. Avoid travel.",
       "outdoor_activity": "Thunderstorm warning. Seek safe shelter indoors.",
-      "farming": "High storms or extreme heat will damage young seedlings."
+      "farming": "High storms or extreme heat will damage young seedlings.",
+      "walking": "Severe wind gusts and lightning risks; stay indoors."
     }
   }
 }
