@@ -225,6 +225,30 @@ export default function SettingsPage() {
             {t('settings.save')}
           </Button>
         </motion.div>
+
+        {/* Subtle Developer Links Footer */}
+        <motion.div variants={itemVariants} className="pt-8 border-t border-slate-500/10 flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 select-none">
+          <span>MazhaCar v1.0.0</span>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://github.com/Arshwinsajeevan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors font-bold underline decoration-slate-500/30 underline-offset-2"
+            >
+              github
+            </a>
+            <span className="text-slate-500/30">•</span>
+            <a
+              href="https://instagram.com/arshw1n"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors font-bold underline decoration-slate-500/30 underline-offset-2"
+            >
+              insta
+            </a>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );
