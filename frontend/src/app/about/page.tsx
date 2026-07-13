@@ -129,6 +129,30 @@ export default function AboutPage() {
           </Card>
         </motion.div>
       </div>
+
+      {/* Developer */}
+      <motion.div variants={itemVariants} className="pt-6 border-t border-slate-500/10 flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 select-none">
+        <span>MazhaCar v1.0.0</span>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://github.com/Arshwinsajeevan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+          >
+            github
+          </a>
+          <span className="text-slate-400/30">·</span>
+          <a
+            href="https://instagram.com/arshw1n"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+          >
+            insta
+          </a>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
