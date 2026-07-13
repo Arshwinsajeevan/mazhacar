@@ -16,13 +16,13 @@ interface ThemeContextProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<ThemeMode>('dark'); // Default to dark mode as requested
+  const [theme, setThemeState] = useState<ThemeMode>('light'); // Default to light mode for first-time visitors
   const [weatherTheme, setWeatherThemeState] = useState<WeatherTheme>('rainy'); // Default weather theme
 
   useEffect(() => {
     // Read from localStorage on mount
     const savedTheme = localStorage.getItem('mazhacar_theme') as ThemeMode;
-    const initialTheme = savedTheme || 'dark';
+    const initialTheme = savedTheme || 'light';
     
     setThemeState(initialTheme);
     
