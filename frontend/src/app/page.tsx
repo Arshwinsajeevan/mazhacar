@@ -157,7 +157,7 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 5 }}
-                  className="absolute left-0 right-0 top-full mt-2 glass-panel p-2 rounded-2xl z-20 space-y-1 shadow-2xl border border-white/20 max-h-60 overflow-y-auto"
+                  className="absolute left-0 right-0 top-full mt-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-2 rounded-2xl z-50 space-y-1 shadow-2xl border border-slate-200 dark:border-slate-800 max-h-60 overflow-y-auto"
                 >
                   {searchLoading ? (
                     <div className="flex items-center justify-center py-4 text-xs font-semibold text-slate-400 gap-2">
@@ -173,7 +173,7 @@ export default function HomePage() {
                           setSearchQuery('');
                           setShowDropdown(false);
                         }}
-                        className="w-full flex items-start gap-2.5 p-2 rounded-xl hover:bg-white/20 dark:hover:bg-slate-800/40 transition-all text-xs font-medium text-slate-800 dark:text-slate-100"
+                        className="w-full flex items-start gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-xs font-medium text-slate-800 dark:text-slate-100 text-left"
                       >
                         <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                         <div className="w-full">
