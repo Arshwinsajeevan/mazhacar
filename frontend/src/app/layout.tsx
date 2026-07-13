@@ -8,7 +8,8 @@ export const metadata: Metadata = {
   description: 'An AI-powered weather decision platform. Convert weather reports into actionable everyday decisions.',
   manifest: '/manifest.json',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 };
 

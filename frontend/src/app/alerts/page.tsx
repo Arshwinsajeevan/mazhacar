@@ -64,7 +64,7 @@ export default function AlertsPage() {
         setNotifEnabled(true);
         new Notification(t('common.appName', 'MazhaCar'), {
           body: t('alerts.custom_alerts_desc', 'Alerts are enabled on your device!'),
-          icon: '/favicon.ico',
+          icon: '/logo.png',
         });
       } else {
         setNotifEnabled(false);

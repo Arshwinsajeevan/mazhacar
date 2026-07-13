@@ -29,8 +29,8 @@ export const notificationService = {
 
     try {
       const defaultOptions: any = {
-        icon: '/favicon.ico',
-        badge: '/favicon.ico',
+        icon: '/logo.png',
+        badge: '/logo.png',
         tag: 'mazhacar-weather-alert',
         renotify: true,
         ...options,
