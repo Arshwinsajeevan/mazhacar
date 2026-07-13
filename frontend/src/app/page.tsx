@@ -52,12 +52,19 @@ export default function HomePage() {
   // Search locations matching query
   const { data: searchResults, isLoading: searchLoading } = useLocationSearch(searchQuery);
 
-  // Sync app ambient background with the actual weather condition
+  // Track the last synced location to allow manual overrides without auto-resetting
+  const [lastSyncedLoc, setLastSyncedLoc] = useState('');
+
+  // Sync app ambient background with the actual weather condition ONLY when coordinates change
   useEffect(() => {
     if (weather?.current?.condition) {
-      setWeatherTheme(weather.current.condition);
+      const locKey = `${currentLocation.latitude.toFixed(3)}_${currentLocation.longitude.toFixed(3)}`;
+      if (lastSyncedLoc !== locKey) {
+        setWeatherTheme(weather.current.condition);
+        setLastSyncedLoc(locKey);
+      }
     }
-  }, [weather?.current?.condition, setWeatherTheme]);
+  }, [weather?.current?.condition, currentLocation.latitude, currentLocation.longitude, lastSyncedLoc, setWeatherTheme]);
 
   // Weather theme manual preview helper list
   const themesList = [
