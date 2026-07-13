@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+Malayalam:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Outfit', 'Inter', 'Noto Sans Malayalam', sans-serif;
+  --font-mono: monospace;
+
+  /* Custom palette matching apple minimalist and premium weather theme */
+  --color-glass-light: rgba(255, 255, 255, 0.4);
+  --color-glass-dark: rgba(15, 23, 42, 0.45);
+  
+  --color-glass-border-light: rgba(255, 255, 255, 0.35);
+  --color-glass-border-dark: rgba(255, 255, 255, 0.08);
+
+  --color-accent-blue: #0ea5e9;
+  --color-accent-indigo: #6366f1;
+  --color-accent-amber: #f59e0b;
+  --color-accent-rose: #f43f5e;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background-color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.04);
+}
+
+.dark .glass-panel {
+  background-color: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.glass-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px 0 rgba(31, 38, 135, 0.03);
+  border-radius: 24px;
+}
+
+.dark .glass-card {
+  background-color: rgba(30, 41, 59, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.25);
+}
+
+.glass-card-interactive {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-interactive:hover {
+  transform: translateY(-4px);
+  background-color: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.08);
+}
+
+.dark .glass-card-interactive:hover {
+  background-color: rgba(30, 41, 59, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.35);
+}
+
+.glass-input {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  background-color: rgba(255, 255, 255, 0.45);
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+  outline: none;
+}
+
+.dark .glass-input {
+  background-color: rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dark .glass-input:focus {
+  background-color: rgba(15, 23, 42, 0.45);
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.45);
+}
+
+/* Weather-based animated gradient backgrounds */
+.weather-bg {
+  transition: background 1s ease-in-out, background-color 1s ease-in-out;
+}
+
+.bg-sunny {
+  background: linear-gradient(135deg, #fef9c3 0%, #ffedd5 50%, #fef08a 100%);
+  background-size: 200% 200%;
+}
+.dark .bg-sunny {
+  background: linear-gradient(135deg, #0f172a 0%, #451a03 50%, #020617 100%);
+  background-size: 200% 200%;
+}
+
+.bg-rainy {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+  background-size: 200% 200%;
+}
+.dark .bg-rainy {
+  background: linear-gradient(135deg, #090d16 0%, #1e3a8a 50%, #030712 100%);
+  background-size: 200% 200%;
+}
+
+.bg-cloudy {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  background-size: 200% 200%;
+}
+.dark .bg-cloudy {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  background-size: 200% 200%;
+}
+
+.bg-stormy {
+  background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 50%, #64748b 100%);
+  background-size: 200% 200%;
+}
+.dark .bg-stormy {
+  background: linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #090d16 100%);
+  background-size: 200% 200%;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100vh;
+}

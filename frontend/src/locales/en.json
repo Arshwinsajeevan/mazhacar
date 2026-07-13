@@ -1,0 +1,150 @@
+{
+  "common": {
+    "appName": "MazhaCar",
+    "tagline": "AI-Powered Weather Decision Platform",
+    "searchPlaceholder": "Search city or region in India...",
+    "loading": "Checking conditions...",
+    "caution": "Caution",
+    "warning": "Warning",
+    "safe": "Safe",
+    "danger": "Danger"
+  },
+  "nav": {
+    "home": "Home",
+    "forecast": "Forecast",
+    "map": "Map",
+    "alerts": "Alerts",
+    "favorites": "Favorites",
+    "settings": "Settings",
+    "about": "About"
+  },
+  "weather": {
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "windSpeed": "Wind Speed",
+    "rainProbability": "Rain Probability",
+    "feelsLike": "Feels Like",
+    "uvIndex": "UV Index",
+    "precipitation": "Precipitation",
+    "conditions": {
+      "sunny": "Sunny",
+      "cloudy": "Cloudy",
+      "rainy": "Rainy",
+      "stormy": "Stormy"
+    }
+  },
+  "questions": {
+    "dry_clothes": "Can I dry clothes today?",
+    "carry_umbrella": "Should I carry an umbrella?",
+    "travel_safe": "Is it safe to travel?",
+    "outdoor_activity": "Is today suitable for outdoor activities?",
+    "rain_soon": "Will it rain soon?"
+  },
+  "decisions": {
+    "yes": "Yes, absolutely",
+    "no": "No, avoid it",
+    "caution": "Yes, but with caution"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage language, theme, real-time alerts, and voice assistant options.",
+    "language": "Language",
+    "select_language": "Select Language",
+    "theme": "Theme",
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "alerts_audio": "Alerts & Audio Settings",
+    "notifications": "Enable Weather Notifications",
+    "notifications_desc": "Receive web push alerts for sudden weather changes and warnings.",
+    "voice": "Enable Voice Assistant",
+    "voice_desc": "Read weather alerts and decision metrics out loud using speech synthesis.",
+    "voiceSpeed": "Voice Speed",
+    "systemTheme": "System Default",
+    "save": "Save Preferences"
+  },
+  "alerts": {
+    "title": "Weather Advisories",
+    "noAlerts": "No active weather alerts at this moment.",
+    "yellow": "Yellow Alert",
+    "orange": "Orange Alert",
+    "red": "Red Alert",
+    "active_advisories": "Active Advisories",
+    "custom_alerts": "Custom Alert Configuration",
+    "custom_alerts_desc": "Manage which occurrences trigger immediate alerts on your device.",
+    "rain_alerts": "Heavy Rain Alerts",
+    "rain_alerts_desc": "Get notified when heavy rain is predicted in your area.",
+    "travel_alerts": "Travel Advisories",
+    "travel_alerts_desc": "Get warnings about road logging or water blocks.",
+    "lightning_alerts": "Lightning Warnings",
+    "lightning_alerts_desc": "Get quick warnings during critical lightning conditions.",
+    "note_title": "Disclaimer",
+    "note_text": "MazhaCar alerts are generated based on Meteorological Department and Disaster Management data."
+  },
+  "about": {
+    "title": "About MazhaCar",
+    "description1": "MazhaCar is an AI-powered weather decision platform designed for India, focusing on translating complex weather metrics into simple, actionable daily advice.",
+    "description2": "Built for high usability, localization, accessibility, and real-time alerts. Default language is Malayalam.",
+    "developer": "Developed with Apple-level minimalism and glassmorphic designs.",
+    "vision_title": "Goal & Vision",
+    "why_title": "Why MazhaCar?",
+    "why_point1": "Translates complex weather datasets into clear, actionable advice.",
+    "why_point2": "Primary focus and design support for regional Indian languages.",
+    "why_point3": "Works seamlessly with minimal network bandwidth.",
+    "tech_title": "Technologies Used",
+    "free_service_desc": "MazhaCar utilizes Open-Meteo, OpenStreetMap, and Nominatim under open/creative commons licenses."
+  },
+  "forecast_data": {
+    "subtitle": "Hourly and daily forecast projections to plan your schedules.",
+    "hourly": "Hourly",
+    "daily": "Daily"
+  },
+  "map_data": {
+    "subtitle": "View live weather markers and regional rain probabilities across Kerala.",
+    "filter_title": "Location Filters",
+    "filter_desc": "Click to focus on major weather monitoring stations.",
+    "legend_title": "Map Legend",
+    "normal_rain": "Normal Rain",
+    "heavy_rain": "Heavy Rain",
+    "very_heavy_rain": "Very Heavy Rain"
+  },
+  "favorites_data": {
+    "subtitle": "Weather metrics and advisories for saved monitoring locations at a glance.",
+    "add_location": "Add Location",
+    "select_location": "Select Location",
+    "no_favorites": "No Favorite Locations Saved",
+    "no_favorites_desc": "Start bookmarking weather stations to view them here.",
+    "munnar_desc": "Cloudy",
+    "kochi_desc": "Raining",
+    "trivandrum_desc": "Sunny"
+  },
+  "decisions_data": {
+    "sunny": {
+      "desc": "The weather is safe. Great time to carry out outdoor activities.",
+      "dry_clothes": "It is a bright sunny day, clothes will dry quickly.",
+      "carry_umbrella": "Only a 5% chance of rain today.",
+      "travel_safe": "Clear skies, roads are safe for travel.",
+      "outdoor_activity": "Excellent conditions for sports and travel."
+    },
+    "rainy": {
+      "desc": "Rain is expected today. Carry an umbrella when heading out.",
+      "dry_clothes": "High chance of rain. Dry your clothes indoors.",
+      "carry_umbrella": "80% chance of rain, an umbrella is highly recommended.",
+      "travel_safe": "Roads might be slippery. Drive slowly and with caution.",
+      "outdoor_activity": "Wet and damp conditions are unsuitable for outdoor activities."
+    },
+    "cloudy": {
+      "desc": "Overcast conditions. Light showers may occur at any time.",
+      "dry_clothes": "Due to cloud cover, clothes will take longer to dry.",
+      "carry_umbrella": "Sudden drizzle is possible under heavy clouds.",
+      "travel_safe": "Cool climate, pleasant conditions for travel.",
+      "outdoor_activity": "Favorable outdoor weather as sun heat is low."
+    },
+    "stormy": {
+      "desc": "Heavy winds and thunderstorm. Avoid non-essential travels.",
+      "dry_clothes": "High winds and storm risk. Keep clothes inside.",
+      "carry_umbrella": "Severe winds make umbrellas ineffective. Stay indoors.",
+      "travel_safe": "Risk of uprooted trees and water logging. Avoid travel.",
+      "outdoor_activity": "Thunderstorm warning. Seek safe shelter indoors."
+    }
+  }
+}
