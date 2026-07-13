@@ -183,6 +183,30 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [currentTime, setCurrentTime] = useState<Date | null>(null);
+
+  // Keep ticking clock synced every second
+  useEffect(() => {
+    setCurrentTime(new Date());
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatDateTime = (date: Date) => {
+    const locale = i18n.language === 'ml' ? 'ml-IN' : (i18n.language === 'hi' ? 'hi-IN' : 'en-US');
+    return new Intl.DateTimeFormat(locale, {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true,
+    }).format(date);
+  };
 
   // Get weather data for the active location
   const {
@@ -356,75 +380,85 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Location Search Input */}
-        <div className="relative w-full xl:w-96 flex gap-2 shrink-0">
-          <div className="relative flex-1">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setShowDropdown(true);
-              }}
-              onFocus={() => setShowDropdown(true)}
-              placeholder={t('common.searchPlaceholder')}
-              className="w-full glass-input pr-10 text-slate-800 dark:text-white py-2 text-sm"
-            />
-            <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
+        {/* Search Input Container & Clock */}
+        <div className="flex flex-col items-start xl:items-end gap-1.5 w-full xl:w-auto shrink-0 select-none">
+          {/* Location Search Input */}
+          <div className="relative w-full xl:w-96 flex gap-2 shrink-0">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowDropdown(true);
+                }}
+                onFocus={() => setShowDropdown(true)}
+                placeholder={t('common.searchPlaceholder')}
+                className="w-full glass-input pr-10 text-slate-800 dark:text-white py-2 text-sm"
+              />
+              <Search className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-slate-400" />
 
-            <AnimatePresence>
-              {showDropdown && searchQuery.trim().length >= 2 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 5 }}
-                  className="absolute left-0 right-0 top-full mt-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-2 rounded-2xl z-50 space-y-1 shadow-2xl border border-slate-200 dark:border-slate-800 max-h-60 overflow-y-auto"
-                >
-                  {searchLoading ? (
-                    <div className="flex items-center justify-center py-4 text-xs font-semibold text-slate-400 gap-2">
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      {t('common.searching')}
-                    </div>
-                  ) : searchResults && searchResults.length > 0 ? (
-                    searchResults.map((res, index) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          changeLocation(res);
-                          setSearchQuery('');
-                          setShowDropdown(false);
-                        }}
-                        className="w-full flex items-start gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-xs font-medium text-slate-800 dark:text-slate-100 text-left"
-                      >
-                        <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                        <div className="w-full">
-                          <p className="font-bold text-left">{res.name}</p>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">{res.displayName}</p>
-                        </div>
-                      </button>
-                    ))
-                  ) : (
-                    <div className="py-4 text-center text-xs text-slate-400">
-                      {t('common.noLocations')}
-                    </div>
-                  )}
-                </motion.div>
+              <AnimatePresence>
+                {showDropdown && searchQuery.trim().length >= 2 && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 5 }}
+                    className="absolute left-0 right-0 top-full mt-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md p-2 rounded-2xl z-50 space-y-1 shadow-2xl border border-slate-200 dark:border-slate-800 max-h-60 overflow-y-auto"
+                  >
+                    {searchLoading ? (
+                      <div className="flex items-center justify-center py-4 text-xs font-semibold text-slate-400 gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        {t('common.searching')}
+                      </div>
+                    ) : searchResults && searchResults.length > 0 ? (
+                      searchResults.map((res, index) => (
+                        <button
+                          key={index}
+                          onClick={() => {
+                            changeLocation(res);
+                            setSearchQuery('');
+                            setShowDropdown(false);
+                          }}
+                          className="w-full flex items-start gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all text-xs font-medium text-slate-800 dark:text-slate-100 text-left"
+                        >
+                          <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
+                          <div className="w-full">
+                            <p className="font-bold text-left">{res.name}</p>
+                            <p className="text-[10px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">{res.displayName}</p>
+                          </div>
+                        </button>
+                      ))
+                    ) : (
+                      <div className="py-4 text-center text-xs text-slate-400">
+                        {t('common.noLocations')}
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <Button
+              variant="glass"
+              className="p-2.5 shrink-0 flex items-center justify-center rounded-2xl active:scale-95"
+              onClick={triggerGPS}
+              disabled={gpsLoading}
+            >
+              {gpsLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Navigation className="w-4 h-4" />
               )}
-            </AnimatePresence>
+            </Button>
           </div>
 
-          <Button
-            variant="glass"
-            className="p-2.5 shrink-0 flex items-center justify-center rounded-2xl active:scale-95"
-            onClick={triggerGPS}
-            disabled={gpsLoading}
-          >
-            {gpsLoading ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <Navigation className="w-4 h-4" />
-            )}
-          </Button>
+          {/* Real-time Ticking Clock */}
+          {currentTime && (
+            <div className="text-[11px] font-bold text-slate-550 dark:text-slate-400 tracking-wide bg-white/40 dark:bg-slate-900/35 border border-white/20 dark:border-white/5 px-3 py-1 rounded-xl shadow-sm">
+              {formatDateTime(currentTime)}
+            </div>
+          )}
         </div>
       </motion.div>
 
