@@ -1,10 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <path d="M10 28h12" stroke="#0088FF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M7 33h11" stroke="#0088FF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M11 38h10" stroke="#0088FF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M26 42c-5 0-8-4-7-8 1-3 4-6 8-6 2-5 7-8 13-8s10 4 12 8c1 0 2-1 4-1 4 0 8 3 8 7s-4 8-8 8H26z" fill="#0088FF"/>
-  <path d="M33 28c2-3 5-5 9-4 3 1 5 3 6 6" stroke="#3AB0FF" stroke-width="2" stroke-linecap="round" fill="none"/>
-  <path d="M30 48l-2 6" stroke="#0088FF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M40 48l-2 7" stroke="#0088FF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M50 47l-2 5" stroke="#0088FF" stroke-width="3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Simple bold cloud -->
+  <path d="M8 22h18c3 0 5-2.5 5-5s-2-5-5-5h-1c-1-4-4-7-8-7-3.5 0-6.5 2-8 5-3.5 0.5-6 3-6 6s2.5 6 5 6z" fill="#0088FF"/>
+  <!-- Three raindrops -->
+  <circle cx="12" cy="26" r="1.5" fill="#0088FF"/>
+  <circle cx="18" cy="27" r="1.5" fill="#0088FF"/>
+  <circle cx="24" cy="25.5" r="1.5" fill="#0088FF"/>
 </svg>

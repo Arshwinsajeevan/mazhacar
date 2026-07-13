@@ -1,19 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
-  <!-- Wind lines -->
-  <path d="M80 200 L180 200" stroke="#0088FF" stroke-width="18" stroke-linecap="round"/>
-  <path d="M60 240 L170 240" stroke="#0088FF" stroke-width="18" stroke-linecap="round"/>
-  <path d="M90 280 L175 280" stroke="#0088FF" stroke-width="18" stroke-linecap="round"/>
-  <!-- Cloud body -->
-  <path d="M200 310 C160 310 140 280 150 255 C155 230 175 215 200 215 C210 185 240 165 275 165 C310 165 340 185 350 210 C355 208 362 207 370 207 C400 207 425 230 425 260 C425 290 400 310 370 310 Z" fill="#0088FF"/>
-  <!-- Inner cloud highlight arc -->
-  <path d="M230 210 C240 185 265 172 290 175 C310 177 328 190 335 210" stroke="#3AB0FF" stroke-width="14" stroke-linecap="round" fill="none"/>
-  <path d="M195 250 C200 230 220 218 242 220" stroke="#3AB0FF" stroke-width="12" stroke-linecap="round" fill="none"/>
-  <!-- Raindrops -->
-  <ellipse cx="240" cy="370" rx="14" ry="20" fill="#0088FF"/>
-  <ellipse cx="300" cy="385" rx="14" ry="20" fill="#0088FF"/>
-  <ellipse cx="360" cy="365" rx="14" ry="20" fill="#0088FF"/>
-  <!-- Raindrop top points -->
-  <path d="M240 345 L228 365 Q240 350 252 365 Z" fill="#0088FF"/>
-  <path d="M300 360 L288 380 Q300 365 312 380 Z" fill="#0088FF"/>
-  <path d="M360 340 L348 360 Q360 345 372 360 Z" fill="#0088FF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Simple bold cloud -->
+  <path d="M8 22h18c3 0 5-2.5 5-5s-2-5-5-5h-1c-1-4-4-7-8-7-3.5 0-6.5 2-8 5-3.5 0.5-6 3-6 6s2.5 6 5 6z" fill="#0088FF"/>
+  <!-- Three raindrops -->
+  <circle cx="12" cy="26" r="1.5" fill="#0088FF"/>
+  <circle cx="18" cy="27" r="1.5" fill="#0088FF"/>
+  <circle cx="24" cy="25.5" r="1.5" fill="#0088FF"/>
 </svg>
