@@ -75,19 +75,19 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       {/* Desktop Sidebar (Left side) */}
       <aside className="hidden md:flex flex-col w-64 glass-panel border-r border-white/20 dark:border-white/5 m-4 mr-0 rounded-3xl z-10 p-6 space-y-8 select-none shrink-0">
         {/* Brand Header */}
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-2xl bg-white/40 dark:bg-slate-900/40 shadow-inner flex items-center justify-center">
+        <Link href="/" className="flex items-center gap-3 cursor-pointer group">
+          <div className="p-2.5 rounded-2xl bg-white/40 dark:bg-slate-900/40 shadow-inner flex items-center justify-center transition-all group-hover:scale-105">
             <CloudRain className="w-7 h-7 text-sky-600 dark:text-sky-400" />
           </div>
           <div>
-            <h1 className="font-bold text-xl tracking-tight leading-none bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+            <h1 className="font-bold text-xl tracking-tight leading-none bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent group-hover:text-sky-500 transition-colors">
               {t('common.appName')}
             </h1>
             <span className="text-[10px] text-slate-500 dark:text-slate-400 tracking-wider font-semibold uppercase">
               MazhaCar
             </span>
           </div>
-        </div>
+        </Link>
 
         {/* Navigation links */}
         <nav className="flex-1 space-y-1">
@@ -135,10 +135,10 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
       {/* Mobile Top Header (Fixed height, no push down) */}
       <header className="flex md:hidden items-center justify-between px-4 py-3 glass-panel m-3 mb-0 rounded-2xl z-10 shrink-0">
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 cursor-pointer">
           <CloudRain className="w-5 h-5 text-sky-600 dark:text-sky-400" />
           <h1 className="font-bold text-base">{t('common.appName')}</h1>
-        </div>
+        </Link>
 
         {/* Translation Switcher & Theme button directly accessible on Mobile Header */}
         <div className="flex items-center gap-2">
@@ -180,13 +180,13 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
       {/* Main Content Area (Flexible viewport bounds with inner scrolling) */}
       <main className="flex-1 flex flex-col min-h-0 z-10 m-3 md:my-4 md:mr-4 md:ml-2 relative overflow-hidden">
-        <div className="flex-1 glass-panel rounded-2xl md:rounded-3xl p-4 md:p-8 overflow-y-auto shadow-xl border border-white/20 dark:border-white/5">
+        <div className="flex-1 glass-panel rounded-2xl md:rounded-3xl p-4 pb-20 md:p-8 overflow-y-auto shadow-xl border border-white/20 dark:border-white/5">
           {children}
         </div>
       </main>
 
       {/* Mobile Bottom Tab Navigation (Fixed bottom placement) */}
-      <nav className="flex md:hidden items-center justify-around py-1.5 px-2 glass-panel m-3 mt-0 rounded-2xl z-10 select-none shrink-0">
+      <nav className="flex md:hidden items-center justify-around py-1.5 px-2 glass-panel fixed bottom-3 left-3 right-3 z-40 select-none shadow-2xl">
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
