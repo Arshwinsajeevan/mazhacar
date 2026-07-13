@@ -163,3 +163,19 @@ html, body {
   overflow-x: hidden;
   min-height: 100vh;
 }
+
+/* Hide Next.js Dev indicators and Vercel feedback badges */
+#vercel-live-feedback,
+vercel-live-feedback,
+.vercel-feedback-button,
+[data-vercel-feedback-button],
+[id^="vercel-live-feedback"],
+.nextjs-static-indicator,
+nextjs-portal,
+#nextjs-dev-overlay,
+.next-route-announcer {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
