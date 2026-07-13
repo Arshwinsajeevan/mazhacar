@@ -1,5 +1,7 @@
 # 🌧️ MazhaCar (മഴക്കാർ)
 
+**Live Demo:** [mazhacar.vercel.app](https://mazhacar.vercel.app)
+
 MazhaCar is an AI-powered weather decision platform designed for India, with Malayalam as the default language. Instead of just showing temperatures, it calculates weather variables to answer practical everyday questions:
 - *Can I dry clothes today?*
 - *Should I carry an umbrella?*
