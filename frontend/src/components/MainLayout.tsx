@@ -52,14 +52,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     { name: t('nav.about'), href: '/about', icon: Info },
   ];
 
-  // Pick exactly 5 items for the mobile bottom nav bar to keep it uncluttered
-  const mobileNavItems = [
-    navItems[0], // Home
-    navItems[1], // Forecast
-    navItems[2], // Map
-    navItems[4], // Favorites
-    navItems[5], // Settings
-  ];
+  // All nav items available in the mobile bottom bar
+  const mobileNavItems = navItems;
 
   // Helper to map weather theme to class and icon
   const getWeatherStyles = () => {
