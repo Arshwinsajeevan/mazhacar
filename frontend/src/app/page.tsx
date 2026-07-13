@@ -121,7 +121,7 @@ export default function HomePage() {
         <div className="flex items-start justify-between w-full xl:w-auto gap-4">
           <PageHeader
             title={currentLocation.name}
-            subtitle={currentLocation.displayName || 'Selected Location'}
+            subtitle={currentLocation.displayName || t('common.selectedLocation', 'Selected Location')}
           />
           <button
             onClick={() => toggleFavorite(currentLocation)}
@@ -162,7 +162,7 @@ export default function HomePage() {
                   {searchLoading ? (
                     <div className="flex items-center justify-center py-4 text-xs font-semibold text-slate-400 gap-2">
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      Searching cities in India...
+                      {t('common.searching', 'Searching cities in India...')}
                     </div>
                   ) : searchResults && searchResults.length > 0 ? (
                     searchResults.map((res, index) => (
@@ -184,7 +184,7 @@ export default function HomePage() {
                     ))
                   ) : (
                     <div className="py-4 text-center text-xs text-slate-400">
-                      No locations found in India
+                      {t('common.noLocations', 'No locations found in India')}
                     </div>
                   )}
                 </motion.div>
@@ -212,7 +212,7 @@ export default function HomePage() {
         <motion.div variants={itemVariants}>
           <div className="p-3 bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300 rounded-2xl flex items-center gap-2 text-xs font-semibold shadow-sm leading-normal">
             <AlertTriangle className="w-4 h-4 shrink-0" />
-            Offline Mode: Currently showing cached weather data. Check your network.
+            {t('common.offlineBanner')}
           </div>
         </motion.div>
       )}
@@ -230,14 +230,14 @@ export default function HomePage() {
         <Card className="flex flex-col items-center justify-center text-center py-12 space-y-4">
           <AlertTriangle className="w-12 h-12 text-rose-500" />
           <div>
-            <h3 className="font-bold text-lg">Unable to load weather details</h3>
+            <h3 className="font-bold text-lg">{t('common.loadError')}</h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-sm">
-              Please check your connection and try again. Open-Meteo services might be experiencing high load.
+              {t('common.loadErrorDesc')}
             </p>
           </div>
           <Button variant="solid" onClick={() => refetchWeather()} className="flex items-center gap-2">
             <RefreshCw className="w-4 h-4" />
-            Retry Connection
+            {t('common.retry')}
           </Button>
         </Card>
       )}
@@ -251,7 +251,7 @@ export default function HomePage() {
               <Card className="h-full flex flex-col items-center justify-between text-center py-6 px-4 md:py-8">
                 <div className="w-full flex items-center justify-between px-2 mb-3">
                   <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Weather Safety Score
+                    {t('common.safetyScore')}
                   </span>
                   <Activity className="w-3.5 h-3.5 text-slate-400" />
                 </div>
@@ -304,7 +304,7 @@ export default function HomePage() {
               <Card className="h-full flex flex-col justify-between py-6 px-4 md:p-6">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Current Conditions
+                    {t('common.currentConditions')}
                   </span>
                   <span className="text-[10px] bg-white/40 dark:bg-slate-800/40 border border-white/20 dark:border-white/10 px-2.5 py-0.5 rounded-xl font-semibold">
                     Live Open-Meteo
@@ -317,7 +317,7 @@ export default function HomePage() {
                       {weather.current.temperature}°C
                     </span>
                     <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                      Feels like {weather.current.apparentTemperature}°C • {currentLocation.name}
+                      {t('weather.feelsLike')} {weather.current.apparentTemperature}°C • {currentLocation.name}
                     </p>
                   </div>
                   <div className="p-3 rounded-2xl bg-white/35 dark:bg-slate-850/35 border border-white/20 shadow-inner flex items-center justify-center shrink-0">
@@ -353,7 +353,7 @@ export default function HomePage() {
                       {t('weather.uvIndex')}
                     </span>
                     <p className="text-sm font-extrabold mt-0.5">
-                      {weather.current.uvIndex} ({weather.current.uvIndex >= 6 ? 'High' : weather.current.uvIndex >= 3 ? 'Mod' : 'Low'})
+                      {weather.current.uvIndex} ({weather.current.uvIndex >= 6 ? t('weather.uvHigh', 'High') : weather.current.uvIndex >= 3 ? t('weather.uvMod', 'Mod') : t('weather.uvLow', 'Low')})
                     </p>
                   </div>
                 </div>
@@ -365,14 +365,14 @@ export default function HomePage() {
           <motion.div variants={itemVariants}>
             <Card className="py-5 px-4 md:p-6">
               <h3 className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
-                MazhaCar Index Performance
+                {t('common.indexPerformance')}
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 md:gap-6">
                 {[
                   { name: t('scores.drying', 'Clothes Drying'), value: weather.scores.drying, color: 'bg-emerald-500' },
-                  { name: t('scores.travel', 'Travel Safe'), value: weather.scores.travel, color: 'bg-sky-500' },
-                  { name: t('scores.outdoor', 'Outdoors'), value: weather.scores.outdoor, color: 'bg-amber-500' },
-                  { name: t('scores.walking', 'Walking Walk'), value: weather.scores.walking, color: 'bg-teal-500' },
+                  { name: t('scores.travel', 'Travel Safety'), value: weather.scores.travel, color: 'bg-sky-500' },
+                  { name: t('scores.outdoor', 'Outdoor Activities'), value: weather.scores.outdoor, color: 'bg-amber-500' },
+                  { name: t('scores.walking', 'Walking Suitability'), value: weather.scores.walking, color: 'bg-teal-500' },
                   { name: t('scores.farming', 'Farming Fit'), value: weather.scores.farming, color: 'bg-indigo-500' },
                 ].map((item, idx) => (
                   <div key={idx} className="space-y-1">
@@ -394,7 +394,7 @@ export default function HomePage() {
             <motion.div variants={itemVariants}>
               <h2 className="text-base md:text-lg font-bold tracking-tight px-1 flex items-center gap-2">
                 <Umbrella className="w-4.5 h-4.5 text-sky-500" />
-                Weather Decisions (AI Recommendations)
+                {t('common.weatherDecisions')}
               </h2>
             </motion.div>
 
@@ -437,10 +437,10 @@ export default function HomePage() {
         <Card className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4">
           <div>
             <h4 className="text-xs md:text-sm font-semibold tracking-wide uppercase text-slate-400 dark:text-slate-400 mb-1">
-              {t('common.preview_title', 'Ambient Weather Previewer')}
+              {t('common.preview_title')}
             </h4>
             <p className="text-[10px] text-slate-500 dark:text-slate-300">
-              {t('common.preview_desc', 'Use these buttons to preview background changes based on weather conditions:')}
+              {t('common.preview_desc')}
             </p>
           </div>
           <div className="flex flex-wrap gap-1.5">

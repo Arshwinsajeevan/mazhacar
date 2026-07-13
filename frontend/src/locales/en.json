@@ -7,7 +7,20 @@
     "caution": "Caution",
     "warning": "Warning",
     "safe": "Safe",
-    "danger": "Danger"
+    "danger": "Danger",
+    "selectedLocation": "Selected Location",
+    "searching": "Searching cities in India...",
+    "noLocations": "No locations found in India",
+    "safetyScore": "Weather Safety Score",
+    "currentConditions": "Current Conditions",
+    "indexPerformance": "MazhaCar Index Performance",
+    "weatherDecisions": "Weather Decisions (AI Recommendations)",
+    "offlineBanner": "Offline Mode: Currently showing cached weather data. Check your network.",
+    "preview_title": "Ambient Weather Previewer",
+    "preview_desc": "Use these buttons to preview background changes based on weather conditions:",
+    "loadError": "Unable to load weather details",
+    "loadErrorDesc": "Please check your connection and try again. Open-Meteo services might be experiencing high load.",
+    "retry": "Retry Connection"
   },
   "nav": {
     "home": "Home",
@@ -26,6 +39,9 @@
     "feelsLike": "Feels Like",
     "uvIndex": "UV Index",
     "precipitation": "Precipitation",
+    "uvHigh": "High",
+    "uvMod": "Mod",
+    "uvLow": "Low",
     "conditions": {
       "sunny": "Sunny",
       "cloudy": "Cloudy",
@@ -38,7 +54,15 @@
     "carry_umbrella": "Should I carry an umbrella?",
     "travel_safe": "Is it safe to travel?",
     "outdoor_activity": "Is today suitable for outdoor activities?",
-    "rain_soon": "Will it rain soon?"
+    "rain_soon": "Will it rain soon?",
+    "outdoor_farming": "Is today suitable for farming?"
+  },
+  "scores": {
+    "drying": "Clothes Drying",
+    "travel": "Travel Safety",
+    "outdoor": "Outdoor Activities",
+    "walking": "Walking Suitability",
+    "farming": "Farming Fit"
   },
   "decisions": {
     "yes": "Yes, absolutely",
@@ -123,28 +147,32 @@
       "dry_clothes": "It is a bright sunny day, clothes will dry quickly.",
       "carry_umbrella": "Only a 5% chance of rain today.",
       "travel_safe": "Clear skies, roads are safe for travel.",
-      "outdoor_activity": "Excellent conditions for sports and travel."
+      "outdoor_activity": "Excellent conditions for sports and travel.",
+      "farming": "Favorable temperature and humidity for irrigation and crop checks."
     },
     "rainy": {
       "desc": "Rain is expected today. Carry an umbrella when heading out.",
       "dry_clothes": "High chance of rain. Dry your clothes indoors.",
       "carry_umbrella": "80% chance of rain, an umbrella is highly recommended.",
       "travel_safe": "Roads might be slippery. Drive slowly and with caution.",
-      "outdoor_activity": "Wet and damp conditions are unsuitable for outdoor activities."
+      "outdoor_activity": "Wet and damp conditions are unsuitable for outdoor activities.",
+      "farming": "Sufficient soil moisture, avoid pesticide application."
     },
     "cloudy": {
       "desc": "Overcast conditions. Light showers may occur at any time.",
       "dry_clothes": "Due to cloud cover, clothes will take longer to dry.",
       "carry_umbrella": "Sudden drizzle is possible under heavy clouds.",
       "travel_safe": "Cool climate, pleasant conditions for travel.",
-      "outdoor_activity": "Favorable outdoor weather as sun heat is low."
+      "outdoor_activity": "Favorable outdoor weather as sun heat is low.",
+      "farming": "Moderate weather, soil moisture levels are highly variable."
     },
     "stormy": {
       "desc": "Heavy winds and thunderstorm. Avoid non-essential travels.",
       "dry_clothes": "High winds and storm risk. Keep clothes inside.",
       "carry_umbrella": "Severe winds make umbrellas ineffective. Stay indoors.",
       "travel_safe": "Risk of uprooted trees and water logging. Avoid travel.",
-      "outdoor_activity": "Thunderstorm warning. Seek safe shelter indoors."
+      "outdoor_activity": "Thunderstorm warning. Seek safe shelter indoors.",
+      "farming": "High storms or extreme heat will damage young seedlings."
     }
   }
 }

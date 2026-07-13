@@ -136,15 +136,15 @@ export function generateRecommendations(
   if (scores.farming >= 75) {
     farmType = 'YES';
     farmAnswer = t('decisions.yes', 'Yes');
-    farmReason = t('about.why_point1', 'Favorable temperature and humidity for irrigation and crop checks.');
+    farmReason = t('decisions_data.sunny.farming', 'Favorable temperature and humidity for irrigation and crop checks.');
   } else if (scores.farming >= 40) {
     farmType = 'CAUTION';
     farmAnswer = t('decisions.caution', 'Caution');
-    farmReason = t('about.why_point3', 'Moderate weather, soil moisture levels are highly variable.');
+    farmReason = t('decisions_data.cloudy.farming', 'Moderate weather, soil moisture levels are highly variable.');
   } else {
     farmType = 'NO';
     farmAnswer = t('decisions.no', 'No');
-    farmReason = t('decisions_data.stormy.outdoor_activity', 'High storms or extreme heat will damage young seedlings.');
+    farmReason = t('decisions_data.stormy.farming', 'High storms or extreme heat will damage young seedlings.');
   }
 
   decisions.push({
