@@ -186,7 +186,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       </main>
 
       {/* Mobile Bottom Tab Navigation (Fixed bottom placement) */}
-      <nav className="flex md:hidden items-center justify-around py-1.5 px-2 glass-panel fixed bottom-3 left-3 right-3 z-40 select-none shadow-2xl">
+      <nav className="flex md:hidden items-center justify-around py-2 px-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 fixed bottom-3 left-3 right-3 z-40 select-none shadow-2xl rounded-2xl">
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
