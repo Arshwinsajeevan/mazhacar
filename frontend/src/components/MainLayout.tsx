@@ -65,15 +65,45 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const getWeatherStyles = () => {
     switch (weatherTheme) {
       case 'sunny':
-        return { class: 'bg-sunny', icon: Sun, color: 'text-amber-500' };
+        return {
+          class: 'bg-sunny',
+          icon: Sun,
+          color: 'text-amber-500',
+          navBg: 'bg-[#fefce8]/95 dark:bg-[#1a0f05]/95 border-amber-200/40 dark:border-amber-900/30',
+          activeText: 'text-amber-600 dark:text-amber-400',
+        };
       case 'rainy':
-        return { class: 'bg-rainy', icon: CloudRain, color: 'text-sky-500' };
+        return {
+          class: 'bg-rainy',
+          icon: CloudRain,
+          color: 'text-sky-500',
+          navBg: 'bg-sky-50/95 dark:bg-[#080d1a]/95 border-sky-200/40 dark:border-sky-900/30',
+          activeText: 'text-sky-600 dark:text-sky-400',
+        };
       case 'cloudy':
-        return { class: 'bg-cloudy', icon: Cloud, color: 'text-slate-500' };
+        return {
+          class: 'bg-cloudy',
+          icon: Cloud,
+          color: 'text-slate-500',
+          navBg: 'bg-slate-50/95 dark:bg-[#111827]/95 border-slate-200/40 dark:border-slate-800/40',
+          activeText: 'text-slate-650 dark:text-slate-400',
+        };
       case 'stormy':
-        return { class: 'bg-stormy', icon: CloudLightning, color: 'text-indigo-600' };
+        return {
+          class: 'bg-stormy',
+          icon: CloudLightning,
+          color: 'text-indigo-600',
+          navBg: 'bg-indigo-50/95 dark:bg-[#070514]/95 border-indigo-200/40 dark:border-indigo-900/30',
+          activeText: 'text-indigo-600 dark:text-indigo-400',
+        };
       default:
-        return { class: 'bg-rainy', icon: CloudRain, color: 'text-sky-500' };
+        return {
+          class: 'bg-rainy',
+          icon: CloudRain,
+          color: 'text-sky-500',
+          navBg: 'bg-sky-50/95 dark:bg-[#080d1a]/95 border-sky-200/40 dark:border-sky-900/30',
+          activeText: 'text-sky-600 dark:text-sky-400',
+        };
     }
   };
 
@@ -85,7 +115,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <div className="fixed inset-0 bg-white/10 dark:bg-slate-950/20 backdrop-brightness-95 pointer-events-none z-0" />
 
       {/* Desktop Sidebar (Left side) */}
-      <aside className="hidden md:flex flex-col w-64 glass-panel border-r border-white/20 dark:border-white/5 m-4 mr-0 rounded-3xl z-10 p-6 space-y-8 select-none shrink-0">
+      <aside className={`hidden md:flex flex-col w-64 border m-4 mr-0 rounded-3xl z-10 p-6 space-y-8 select-none shrink-0 transition-all duration-1000 ${currentStyle.navBg}`}>
         {/* Brand Header */}
         <Link href="/" className="flex items-center gap-3 cursor-pointer group">
           <div className="p-2.5 rounded-2xl bg-white/40 dark:bg-slate-900/40 shadow-inner flex items-center justify-center transition-all group-hover:scale-105">
@@ -112,13 +142,13 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 href={item.href}
                 className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-200 ${
                   isActive
-                    ? 'bg-white/60 dark:bg-slate-800/60 shadow-sm font-semibold scale-[1.02] border border-white/40 dark:border-white/10 text-sky-600 dark:text-sky-400'
-                    : 'hover:bg-white/20 dark:hover:bg-slate-900/20 text-slate-600 dark:text-slate-300'
+                    ? 'bg-white/60 dark:bg-slate-800/60 shadow-sm font-semibold scale-[1.02] border border-white/40 dark:border-white/10 ' + currentStyle.activeText
+                    : 'hover:bg-white/20 dark:hover:bg-slate-900/20 text-slate-650 dark:text-slate-300'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <Icon className="w-5 h-5" />
-                  <span className="text-sm">{item.name}</span>
+                  <span className="text-sm font-bold">{item.name}</span>
                 </div>
                 {item.badge && (
                   <span className="w-2 h-2 rounded-full bg-rose-500 ring-4 ring-rose-500/20 animate-pulse" />
@@ -139,14 +169,14 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
               {theme === 'dark' ? '🌙 Dark' : '☀️ Light'}
             </button>
           </div>
-          <div className="text-[11px] text-slate-400 text-center">
+          <div className="text-[11px] text-slate-400 text-center font-bold">
             MazhaCar v1.0.0
           </div>
         </div>
       </aside>
 
       {/* Mobile Top Header (Fixed height, no push down) */}
-      <header className="flex md:hidden items-center justify-between px-4 py-3 glass-panel m-3 mb-0 rounded-2xl z-10 shrink-0">
+      <header className={`flex md:hidden items-center justify-between px-4 py-3 border m-3 mb-0 rounded-2xl z-10 shrink-0 transition-all duration-1000 ${currentStyle.navBg}`}>
         <Link href="/" className="flex items-center gap-2 cursor-pointer">
           <CloudRain className="w-5 h-5 text-sky-600 dark:text-sky-400" />
           <h1 className="font-bold text-base">{t('common.appName')}</h1>
@@ -192,13 +222,13 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 
       {/* Main Content Area (Flexible viewport bounds with inner scrolling) */}
       <main className="flex-1 flex flex-col min-h-0 z-10 m-3 md:my-4 md:mr-4 md:ml-2 relative overflow-hidden">
-        <div className="flex-1 glass-panel rounded-2xl md:rounded-3xl p-4 pb-20 md:p-8 overflow-y-auto shadow-xl border border-white/20 dark:border-white/5">
+        <div className={`flex-1 rounded-2xl md:rounded-3xl p-4 pb-20 md:p-8 overflow-y-auto shadow-xl border transition-all duration-1000 ${currentStyle.navBg}`}>
           {children}
         </div>
       </main>
 
       {/* Mobile Bottom Tab Navigation (Fixed bottom placement) */}
-      <nav className="flex md:hidden items-center justify-around py-2 px-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 fixed bottom-3 left-3 right-3 z-40 select-none shadow-2xl rounded-2xl">
+      <nav className={`flex md:hidden items-center justify-around py-2 px-2 border fixed bottom-3 left-3 right-3 z-40 select-none shadow-2xl rounded-2xl transition-all duration-1000 ${currentStyle.navBg}`}>
         {mobileNavItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href;
@@ -206,8 +236,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-col items-center justify-center p-1.5 rounded-xl relative ${
-                isActive ? 'text-sky-600 dark:text-sky-400 font-bold scale-105' : 'text-slate-500 dark:text-slate-400'
+              className={`flex flex-col items-center justify-center p-1.5 rounded-xl relative transition-all duration-300 ${
+                isActive ? `${currentStyle.activeText} font-bold scale-105` : 'text-slate-500 dark:text-slate-400'
               }`}
             >
               <Icon className="w-4.5 h-4.5" />
