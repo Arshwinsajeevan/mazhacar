@@ -382,6 +382,13 @@ export default function HomePage() {
 
         {/* Search Input Container & Clock */}
         <div className="flex flex-col items-start xl:items-end gap-1.5 w-full xl:w-auto shrink-0 select-none">
+          {/* Real-time Ticking Clock */}
+          {currentTime && (
+            <div className="text-[11px] font-bold text-slate-550 dark:text-slate-400 tracking-wide bg-white/40 dark:bg-slate-900/35 border border-white/20 dark:border-white/5 px-3 py-1 rounded-xl shadow-sm">
+              {formatDateTime(currentTime)}
+            </div>
+          )}
+
           {/* Location Search Input */}
           <div className="relative w-full xl:w-96 flex gap-2 shrink-0">
             <div className="relative flex-1">
@@ -452,13 +459,6 @@ export default function HomePage() {
               )}
             </Button>
           </div>
-
-          {/* Real-time Ticking Clock */}
-          {currentTime && (
-            <div className="text-[11px] font-bold text-slate-550 dark:text-slate-400 tracking-wide bg-white/40 dark:bg-slate-900/35 border border-white/20 dark:border-white/5 px-3 py-1 rounded-xl shadow-sm">
-              {formatDateTime(currentTime)}
-            </div>
-          )}
         </div>
       </motion.div>
 
