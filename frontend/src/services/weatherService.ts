@@ -39,7 +39,7 @@ export function getDayName(dateString: string): string {
  * Service to interact with the free Open-Meteo Forecast API.
  */
 export async function fetchWeather(latitude: number, longitude: number): Promise<WeatherData> {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,visibility&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,weather_code,uv_index,visibility,cloud_cover&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max&timezone=auto`;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,visibility&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,weather_code,uv_index,visibility,cloud_cover,wind_speed_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,precipitation_probability_max&timezone=auto`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -88,10 +88,10 @@ export async function fetchWeather(latitude: number, longitude: number): Promise
       apparentTemperature: Math.round(data.hourly.apparent_temperature[i]),
       humidity: Math.round(data.hourly.relative_humidity_2m[i]),
       rainProbability: Math.round(data.hourly.precipitation_probability[i]),
-      windSpeed: Math.round(data.hourly.wind_speed_10m[i]),
-      windDirection: Math.round(data.hourly.wind_direction_10m[i]),
+      windSpeed: Math.round(data.hourly.wind_speed_10m?.[i] ?? 0),
+      windDirection: Math.round(data.hourly.wind_direction_10m?.[i] ?? 0),
       cloudCover: Math.round(data.hourly.cloud_cover[i]),
-      visibility: Math.round(data.hourly.visibility[i] / 1000),
+      visibility: Math.round((data.hourly.visibility[i] ?? 10000) / 1000),
       uvIndex: Math.round(data.hourly.uv_index[i]),
       condition: mapWeatherCodeToTheme(data.hourly.weather_code[i]),
       weatherCode: data.hourly.weather_code[i],
