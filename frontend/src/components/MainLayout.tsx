@@ -152,10 +152,42 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           })}
         </nav>
 
-        {/* Footer info & Weather Theme indicators */}
-        <div className="space-y-4 pt-4 border-t border-slate-500/10">
+        {/* Footer info & Controls */}
+        <div className="space-y-3 pt-4 border-t border-slate-500/10">
+          {/* Language Switcher */}
           <div className="flex items-center justify-between p-3 rounded-2xl bg-white/20 dark:bg-slate-900/20">
-            <span className="text-xs text-slate-500 dark:text-slate-400">Theme System</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">Language</span>
+            <div className="flex items-center gap-1 bg-white/30 dark:bg-slate-900/30 p-0.5 rounded-xl">
+              <button
+                onClick={() => changeLanguage('ml')}
+                className={`px-2 py-0.5 text-[10px] font-bold rounded-lg transition-all ${
+                  language === 'ml' ? 'bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-slate-500'
+                }`}
+              >
+                മല
+              </button>
+              <button
+                onClick={() => changeLanguage('en')}
+                className={`px-2 py-0.5 text-[10px] font-bold rounded-lg transition-all ${
+                  language === 'en' ? 'bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-slate-500'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => changeLanguage('hi')}
+                className={`px-2 py-0.5 text-[10px] font-bold rounded-lg transition-all ${
+                  language === 'hi' ? 'bg-white dark:bg-slate-800 text-sky-600 dark:text-sky-400 shadow-sm' : 'text-slate-500'
+                }`}
+              >
+                हिं
+              </button>
+            </div>
+          </div>
+
+          {/* Theme Toggle */}
+          <div className="flex items-center justify-between p-3 rounded-2xl bg-white/20 dark:bg-slate-900/20">
+            <span className="text-xs text-slate-500 dark:text-slate-400">Theme</span>
             <button
               onClick={toggleTheme}
               className="px-2.5 py-1 rounded-xl text-xs bg-white/60 dark:bg-slate-800/60 hover:bg-white/80 dark:hover:bg-slate-700/80 shadow-sm border border-white/40 dark:border-white/10"
